@@ -1,0 +1,18 @@
+---
+# file: roles/common/main.yml
+
+- name: Install basic packages
+  apt:
+    name={{ item }}
+    state=latest
+    update_cache=yes
+  with_items:
+    - curl
+    - python-apt
+    - python-pip
+    - python-pycurl
+    - unzip
+
+- include: bashrc.yml tags=bashrc
+- include: git.yml tags=git
+- include: vim.yml tags=vim

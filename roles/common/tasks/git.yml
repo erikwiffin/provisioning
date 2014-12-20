@@ -1,0 +1,19 @@
+---
+# file: roles/common/tasks/git.yml
+- name: Add git repo
+  apt_repository:
+    repo='ppa:git-core/ppa'
+    state=present
+    update_cache=yes
+
+- name: Install git
+  apt:
+    name=git
+    state=present
+
+- name: Copy gitconfig
+  sudo: no
+  template:
+    src=../files/gitconfig
+    dest=~/.gitconfig
+    mode=0664

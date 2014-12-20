@@ -1,0 +1,9 @@
+---
+# file: roles/common/tasks/bashrc.yml
+
+- name: Copy bashrc
+  sudo: no
+  template:
+    src=../files/bashrc
+    dest=~/.bashrc
+    mode=0664
