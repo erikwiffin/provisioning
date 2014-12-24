@@ -1,0 +1,9 @@
+---
+# files: roles/nginx/tasks/nginx.yml
+
+- name: Install nginx
+  apt:
+    name=nginx
+    state=latest
+  notify:
+    - restart nginx

@@ -1,0 +1,4 @@
+---
+# file: roles/mysql/tasks/main.yml
+
+- include: mysql.yml tags=mysql

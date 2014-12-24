@@ -8,8 +8,8 @@
 
 - name: Copy vimrc
   sudo: no
-  template:
-    src=../files/vimrc
+  copy:
+    src=vimrc
     dest=~/.vimrc
     mode=0664
 

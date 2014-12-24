@@ -1,0 +1,5 @@
+---
+# file: roles/php/tasks/main.yml
+
+- include: php.yml tags=php
+- include: composer.yml tags=composer

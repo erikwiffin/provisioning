@@ -1,0 +1,4 @@
+---
+# file: roles/mysql/defaults/main.yml
+
+mysql_root_password: CHANGEME

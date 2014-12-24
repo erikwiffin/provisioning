@@ -13,7 +13,7 @@
 
 - name: Copy gitconfig
   sudo: no
-  template:
-    src=../files/gitconfig
+  copy:
+    src=gitconfig
     dest=~/.gitconfig
     mode=0664

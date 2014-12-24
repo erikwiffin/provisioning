@@ -1,0 +1,7 @@
+---
+# file: roles/php/handlers/main.yml
+
+- name: restart php
+  service:
+    name=php5-fpm
+    state=reloaded
