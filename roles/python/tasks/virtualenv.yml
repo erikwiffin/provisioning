@@ -1,0 +1,7 @@
+---
+# file: roles/python/tasks/virtualenv.yml
+
+- name: Install Virtualenv
+  pip:
+    name=virtualenv
+    state=latest

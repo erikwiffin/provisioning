@@ -1,0 +1,11 @@
+---
+# file: roles/python/tasks/python.yml
+
+- name: Install Python
+  apt:
+    name={{ item }}
+    state=latest
+  with_items:
+    - python
+    - python-dev
+    - python-pip

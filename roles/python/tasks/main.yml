@@ -1,0 +1,5 @@
+---
+# file: roles/python/tasks/main.yml
+
+- include: python.yml tags=python
+- include: virtualenv.yml tags=virtualenv
