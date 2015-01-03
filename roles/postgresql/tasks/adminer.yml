@@ -1,0 +1,22 @@
+---
+# file: roles/postgresql/tasks/adminer.yml
+
+- name: Install Adminer
+  apt:
+    name={{ item }}
+    state=latest
+  with_items:
+    - adminer
+
+- name: Provide adminer.conf to sites-available
+  copy:
+    src=etc/nginx/sites-available/adminer.conf
+    dest=/etc/nginx/sites-available/adminer.conf
+
+- name: Symlink to sites-enabled
+  file:
+    src=/etc/nginx/sites-available/adminer.conf
+    dest=/etc/nginx/sites-enabled/adminer.conf
+    state=link
+  notify:
+    - restart nginx

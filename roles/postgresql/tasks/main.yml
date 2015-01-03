@@ -1,0 +1,5 @@
+---
+# file: roles/postgresql/tasks/main.yml
+
+- include: postgresql.yml tags=postgresql
+- include: adminer.yml tags=adminer

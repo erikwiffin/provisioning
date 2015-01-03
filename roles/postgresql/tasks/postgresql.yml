@@ -1,0 +1,49 @@
+---
+# file: roles/postgresql/tasks/postgresql.yml
+
+- name: Add pgdg source
+  copy:
+    src=etc/apt/sources.list.d/pgdg.list
+    dest=/etc/apt/sources.list.d/pgdg.list
+
+- name: Add the repository key
+  apt_key:
+    url=https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    state=present
+
+- name: Install PostgreSQL
+  apt:
+    name={{ item }}
+    state=latest
+    update_cache=yes
+  with_items:
+    - postgresql
+    - postgresql-client
+    - postgresql-contrib
+    - libpq-dev
+    - python-psycopg2
+
+- name: Open PostgreSQL to TCP/IP connections
+  lineinfile:
+    dest=/etc/postgresql/9.4/main/postgresql.conf
+    regexp="^#listen_addresses"
+    line="listen_addresses = 'localhost'"
+    state=present
+  notify:
+    - restart postgresql
+
+- name: Create a base postgres db
+  postgresql_db:
+    name=test
+    state=present
+  sudo_user: postgres
+
+- name: Configure postgres user
+  postgresql_user:
+    db=test
+    name=test
+    password=password
+    priv=ALL
+    role_attr_flags=CREATEDB,CREATEUSER,CREATEROLE
+    state=present
+  sudo_user: postgres
