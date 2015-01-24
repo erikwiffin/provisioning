@@ -1,0 +1,9 @@
+---
+# file: roles/node/tasks/grunt.yml
+
+- name: Install Grunt
+  npm:
+    name=grunt-cli
+    state=latest
+    global=yes
+    production=yes

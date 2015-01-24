@@ -1,0 +1,8 @@
+---
+# file: roles/php/tasks/php-cs-fixer.yml
+
+- name: Install php-cs-fixer
+  shell: curl http://get.sensiolabs.org/php-cs-fixer.phar -o php-cs-fixer
+    && chmod a+x php-cs-fixer
+    && mv php-cs-fixer /usr/local/bin/php-cs-fixer
+    creates="/usr/local/bin/php-cs-fixer"

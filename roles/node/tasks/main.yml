@@ -1,0 +1,6 @@
+---
+# file: roles/node/tasks/main.yml
+
+- include: node.yml tags=node
+- include: grunt.yml tags=grunt
+- include: bower.yml tags=bower

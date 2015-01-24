@@ -3,3 +3,4 @@
 
 - include: php.yml tags=php
 - include: composer.yml tags=composer
+- include: php-cs-fixer.yml tags=php-cs-fixer

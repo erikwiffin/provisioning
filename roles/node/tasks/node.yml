@@ -1,0 +1,11 @@
+---
+# file: roles/node/tasks/node.yml
+
+- name: Install NodeSource
+  shell: curl -sL https://deb.nodesource.com/setup | sudo bash -
+    creates="/etc/apt/sources.list.d/nodesource.list"
+
+- name: Install Node
+  apt:
+    name=nodejs
+    state=latest

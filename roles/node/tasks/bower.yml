@@ -1,0 +1,9 @@
+---
+# file: roles/node/tasks/bower.yml
+
+- name: Install Bower
+  npm:
+    name=bower
+    state=latest
+    global=yes
+    production=yes
