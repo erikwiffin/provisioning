@@ -13,11 +13,14 @@
     dest=~/.vimrc
     mode=0664
 
-- name: Assures ~/.vim/autoload exists
+- name: Assures ~/.vim directories exist
   sudo: no
   file:
-    path=~/.vim/autoload
+    path={{ item }}
     state=directory
+  with_items:
+    - ~/.vim/autoload
+    - ~/.vim/bundle
 
 - name: Install pathogen
   sudo: no
@@ -26,3 +29,13 @@
     dest=~/.vim/autoload/pathogen.vim
     mode=0664
     force=no
+
+- name: Install vim-javascript
+  sudo: no
+  git: repo=git@github.com:pangloss/vim-javascript.git
+       dest=~/.vim/bundle/vim-javascript
+
+- name: Install vim-jsx
+  sudo: no
+  git: repo=git@github.com:mxw/vim-jsx.git
+       dest=~/.vim/bundle/vim-jsx
