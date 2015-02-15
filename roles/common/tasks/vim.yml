@@ -34,8 +34,22 @@
   sudo: no
   git: repo=git@github.com:pangloss/vim-javascript.git
        dest=~/.vim/bundle/vim-javascript
+       accept_hostkey=yes
 
 - name: Install vim-jsx
   sudo: no
   git: repo=git@github.com:mxw/vim-jsx.git
        dest=~/.vim/bundle/vim-jsx
+       accept_hostkey=yes
+
+- name: Install html5.vim
+  sudo: no
+  git: repo=git@github.com:othree/html5.vim.git
+       dest=~/.vim/bundle/html5.vim
+       accept_hostkey=yes
+
+- name: Install vim-twig
+  sudo: no
+  git: repo=git@github.com:evidens/vim-twig.git
+       dest=~/.vim/bundle/vim-twig
+       accept_hostkey=yes

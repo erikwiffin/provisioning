@@ -1,0 +1,11 @@
+---
+# file: roles/sqlite/tasks/sqlite.yml
+
+- name: Install sqlite
+  apt:
+    name={{ item }}
+    state=latest
+  with_items:
+    - sqlite3
+    - php5-sqlite
+    - libsqlite3-dev

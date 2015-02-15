@@ -1,0 +1,23 @@
+---
+# file: roles/adduser/tasks/main.yml
+
+- name: Create user account
+  user:
+    name={{ item }}
+    state=present
+    groups="sudo"
+    createhome=yes
+  with_items: ssh_users
+
+- name: Add authorized ssh key
+  authorized_key:
+    user={{ item }}
+    key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    state=present
+  with_items: ssh_users
+
+- name: Enable sudo with no password
+  template:
+    src=etc/sudoers.d/nopasswd
+    dest=/etc/sudoers.d/nopasswd
+    validate='visudo -cf %s'

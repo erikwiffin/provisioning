@@ -1,0 +1,4 @@
+---
+# file: roles/sqlite/tasks/main.yml
+
+- include: sqlite.yml tags=sqlite
