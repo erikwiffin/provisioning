@@ -1,0 +1,11 @@
+---
+# file: roles/nginx/defaults/main.yml
+
+# Projects is a list of git repositories to be configured with nginx.
+# Example:
+#
+# projects:
+#   - repo: https://github.com/erikwiffin/todo-list-cqrs.git
+#     domain: todoapp.wiffin.com
+#     wwwroot: public
+projects: []

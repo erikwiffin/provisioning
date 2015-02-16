@@ -2,3 +2,4 @@
 # file: roles/nginx/tasks/main.yml
 
 - include: nginx.yml tags=nginx
+- include: vhosts.yml tags=vhosts

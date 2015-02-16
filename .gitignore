@@ -1,2 +1,7 @@
 Vagrantfile
 .vagrant
+
+# Playbooks are plentiful and not worth committing
+/*.yml
+# Hostfile is confidential, shh...
+hosts

@@ -1,0 +1,47 @@
+---
+# file: roles/nginx/tasks/vhosts.yml
+
+- name: Make sure www directory exists
+  file:
+    path=/var/www
+    owner=www-data
+    group=www-data
+    state=directory
+    mode=755
+
+- name: Clone projects
+  git:
+    repo="{{ item.repo }}"
+    dest="/var/www/{{ item.domain }}"
+    accept_hostkey=yes
+    update=yes
+    force=no
+  with_items: projects
+  notify:
+    - restart nginx
+
+- name: Make sure the right permissions are set
+  file:
+    path="/var/www/{{ item.domain }}"
+    owner=www-data
+    group=www-data
+    recurse=yes
+  with_items: projects
+
+- name: Setup sites-available
+  template:
+    src="etc/nginx/sites-available/vhost.conf"
+    dest="/etc/nginx/sites-available/{{ item.domain }}.conf"
+    mode=0644
+  with_items: projects
+  notify:
+    - restart nginx
+
+- name: Link to sites-enabled
+  file:
+    src="/etc/nginx/sites-available/{{ item.domain }}.conf"
+    dest="/etc/nginx/sites-enabled/{{ item.domain }}.conf"
+    state=link
+  with_items: projects
+  notify:
+    - restart nginx
