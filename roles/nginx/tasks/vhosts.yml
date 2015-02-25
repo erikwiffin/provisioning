@@ -17,6 +17,7 @@
     update=yes
     force=no
   with_items: projects
+  ignore_errors: yes
   notify:
     - restart nginx
 
