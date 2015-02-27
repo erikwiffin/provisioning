@@ -1,0 +1,4 @@
+---
+# file: roles/consul/tasks/main.yml
+
+- include: consul.yml tags=consul

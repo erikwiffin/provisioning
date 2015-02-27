@@ -1,0 +1,4 @@
+---
+# file: roles/docker/tasks/main.yml
+
+- include: docker.yml tags=docker
