@@ -53,3 +53,9 @@
   git: repo=git@github.com:evidens/vim-twig.git
        dest=~/.vim/bundle/vim-twig
        accept_hostkey=yes
+
+- name: Install vim-less
+  sudo: no
+  git: repo=git@github.com:groenewege/vim-less.git
+       dest=~/.vim/bundle/vim-less
+       accept_hostkey=yes
